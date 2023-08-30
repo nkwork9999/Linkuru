@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+  react:
+    container_name: react_linkru
+    build: 
+     context: ./reactlink
+     target: base
+    ports:
+    - 3000:3000
+    tty: true
+    volumes:
+      - ./reactlink:/workspace:cached
+   environment:
+   - REACT_APP_LARAVEL_SERVER =http://localhost:8080/laravel
+
+  php:
+    container_name:php_linkuru
+    build:
+      context: ./phplink
+      target: base
+    ports:
+    - 8080:8080
+    tty:true
+    volumes:
+    - ./phplink:/workspace:cached
+  
+ 
